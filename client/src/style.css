@@ -1,0 +1,67 @@
+/* Center the form on the screen */
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header {
+  background-color: black;
+  color: white;
+  font-weight: bold;
+  font-size: larger;
+  height: 50px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
+  box-sizing: border-box;
+  position: fixed; /* Optional: keep it on top */
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+/* Login form styling */
+.login-form {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+}
+
+/* Input fields */
+.login-form input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+/* Label styling */
+.login-form label {
+  font-weight: 500;
+  display: block;
+  margin-bottom: 4px;
+}
+
+/* Blue login button */
+.login-form button {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff; /* Bootstrap blue */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.login-form button:hover {
+  background-color: #0056b3;
+}
