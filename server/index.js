@@ -4,7 +4,7 @@ const cors = require('cors');
 const User = require('./models/userModel');
 
 const PORT = 8000;
-const mongoDBURL = 'mongodb+srv://root:root@cluster0.rzbua.mongodb.net/books-collection?retryWrites=true&w=majority&appName=Cluster0';
+const mongoDBURL = 'your mongodb connection string';
 
 const app = express();
 app.use(cors());
