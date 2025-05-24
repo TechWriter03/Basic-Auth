@@ -2,9 +2,10 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const User = require('./models/userModel');
+const DataModel = require('./models/dataModel');
 
 const PORT = 8000;
-const mongoDBURL = 'your mongodb connection string';
+const mongoDBURL = 'mongodb+srv://root:root@cluster0.rzbua.mongodb.net/books-collection?retryWrites=true&w=majority&appName=Cluster0';
 
 const app = express();
 app.use(cors());
@@ -75,6 +76,33 @@ app.get('/all-users', async (req, res) => {
   } catch (err) {
     console.error(err.message);
     return res.status(500).send({ message: err.message });
+  }
+});
+
+// UPLOAD EXCEL DATA TO DB
+app.post('/upload-data', async (req, res) => {
+  try {
+    const data = req.body;
+
+    if (!Array.isArray(data) || data.length === 0) {
+      return res.status(400).json({ message: 'Invalid or empty data format' });
+    }
+
+    const inserted = await DataModel.insertMany(data);
+    res.status(200).json({ message: 'Data added successfully', insertedCount: inserted.length });
+  } catch (error) {
+    console.error('Error inserting data:', error);
+    res.status(500).json({ message: 'Failed to add data to the database' });
+  }
+});
+
+// GET EXCEL DATA IN DB
+app.get('/all-data', async (req, res) => {
+  try {
+    const allData = await DataModel.find({});
+    res.status(200).json({ data: allData });  // or { data: allData }
+  } catch (error) {
+    res.status(500).json({ message: "Failed to fetch data" });
   }
 });
 
