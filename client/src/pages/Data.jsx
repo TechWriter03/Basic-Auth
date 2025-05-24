@@ -14,7 +14,7 @@ const Data = () => {
         return res.json();
       })
       .then((json) => {
-        setData(json.datas || []); // change to match your backend key if needed
+        setData(json.data || []);
         setLoading(false);
       })
       .catch((err) => {
